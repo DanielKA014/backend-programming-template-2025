@@ -18,4 +18,10 @@ module.exports = (app) => {
   // TODO: Update a book by id
 
   // TODO: Delete a book by id
+  app.get('/api/book?offset=25&limit=10', (request, response) => {
+    const offset = request.query.offset || 0;
+    const limit = request.query.limit || 20;
+    response.send(`offset:${offset}; limit:${limit}`);
+  });
+
 };

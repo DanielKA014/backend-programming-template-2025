@@ -10,7 +10,6 @@ module.exports = (app) => {
   // Get list of users
   route.get('/', usersController.getUsers);
 
-  // Create a new user
   route.post('/', usersController.createUser);
 
   // Get user detail
@@ -24,4 +23,10 @@ module.exports = (app) => {
 
   // Delete user
   route.delete('/:id', usersController.deleteUser);
+
+  app.get('/api/users?offset=0&limit=20', (request, response) => {
+    const offset = request.query.offset || 0;
+    const limit = request.query.limit || 20;
+    response.send(`offset:${offset}; limit:${limit}`);
+  });
 };
